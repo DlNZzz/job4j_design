@@ -13,21 +13,14 @@ public class Generics {
         first.add(new Animal());
         second.add(new Predator());
         third.add(new Tiger());
-/*
-1-ый метод - работает без ограничений, т.е. в него можно передавать коллекцию, которая хранит любые типы.
-2-ой метод - должен иметь ограничение сверху и ограничиваться классом Predator.
-3-ий метод - должен иметь ограничение снизу и ограничиваться классом Predator.
- */
         gen.printObject(first);
         gen.printObject(second);
         gen.printObject(third);
         System.out.println();
-
         //gen.printBoundedWildCard(first);
         gen.printBoundedWildCard(second);
         gen.printBoundedWildCard(third);
         System.out.println();
-
         gen.printLowerBoundedWildCard(first);
         gen.printLowerBoundedWildCard(second);
         //gen.printLowerBoundedWildCard(third);
