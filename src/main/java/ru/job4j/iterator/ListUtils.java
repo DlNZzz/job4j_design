@@ -49,17 +49,11 @@ public class ListUtils {
     }
 
     public static <T> void removeAll(List<T> list, List<T> elements) {
-        ListIterator<T> listIterator;
-        ListIterator<T> elementsIterator = elements.listIterator();
-        while (elementsIterator.hasNext()) {
-            T element = elementsIterator.next();
-            listIterator = list.listIterator();
-            while (listIterator.hasNext()) {
-                if (element.equals(listIterator.next())) {
-                    listIterator.remove();
-                }
+        ListIterator<T> listIterator = list.listIterator();
+        while (listIterator.hasNext()) {
+            if (elements.contains(listIterator.next())) {
+                listIterator.remove();
             }
         }
     }
-
 }
