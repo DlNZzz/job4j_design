@@ -1,6 +1,9 @@
 package ru.job4j.collection.map;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class User {
     private String name;
@@ -11,5 +14,15 @@ public class User {
         this.name = name;
         this.children = children;
         this.birthday = birthday;
+    }
+
+    public static void main(String[] args) {
+        Calendar calendar = new GregorianCalendar();
+        User user = new User("qwe", 12, calendar);
+        User user2 = new User("qwe", 12, calendar);
+        Map<User, Object> map = new HashMap<>();
+        map.put(user, new Object());
+        map.put(user2, new Object());
+        System.out.println(map);
     }
 }
