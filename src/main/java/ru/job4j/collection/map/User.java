@@ -23,6 +23,7 @@ public class User {
         System.out.println(map);
     }
 
+    @SuppressWarnings("checkstyle:EqualsHashCode")
     @Override
     public int hashCode() {
         return Objects.hash(name, children, birthday);
