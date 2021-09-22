@@ -2,7 +2,8 @@ package ru.job4j.test.task;
 
 import java.util.Scanner;
 
-public class Solution1 {
+public class SolutionOne {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int days = scanner.nextInt();
