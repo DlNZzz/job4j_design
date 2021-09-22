@@ -3,7 +3,7 @@ package ru.job4j.test.task;
 import java.util.Scanner;
 
 public class SolutionOne {
-
+/*
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int days = scanner.nextInt();
@@ -40,8 +40,7 @@ public class SolutionOne {
                         dayCount = days;
                     }
                 }
-                default -> {
-                }
+                default -> { }
             }
         }
         if (dayCount > 0) {
@@ -54,4 +53,5 @@ public class SolutionOne {
             System.out.println("yearCount " + yearCount);
         }
     }
+ */
 }
