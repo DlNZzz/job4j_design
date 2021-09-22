@@ -12,13 +12,11 @@ public class SolutionD {
         BufferedReader bufferedReader3 = new BufferedReader(new FileReader("src\\main\\java\\ru\\job4j\\test\\" + arrayS[1]));
         List<String> list = new ArrayList<>();
         List<String> list2 = new ArrayList<>();
-
         String line = bufferedReader2.readLine();
         while (line != null) {
             line = bufferedReader2.readLine();
             list.add(line);
         }
-
         String line3 = bufferedReader3.readLine();
         while (line3 != null) {
             line3 = bufferedReader3.readLine();

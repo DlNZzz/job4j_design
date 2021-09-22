@@ -2,7 +2,7 @@ package ru.job4j.test;
 
 import java.io.*;
 
-public class Solution0 {
+public class SolutionNull {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\main\\java\\ru\\job4j\\test\\123"));
         String line = bufferedReader.readLine();
