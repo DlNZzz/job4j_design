@@ -10,7 +10,6 @@ public class Solution4 {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Random random = new Random();
         int x = random.nextInt(101);
-        System.out.println(x);
         boolean isEmpty = false;
         while (!isEmpty) {
             int randomInt = Integer.parseInt(reader.readLine());

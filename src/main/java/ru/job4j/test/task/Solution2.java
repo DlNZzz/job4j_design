@@ -1,7 +1,5 @@
 package ru.job4j.test.task;
 
-import java.util.Scanner;
-
 public class Solution2 {
     public static void main(String[] args) {
         sol(0.5, 0.5);
