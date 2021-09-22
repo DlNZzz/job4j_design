@@ -8,17 +8,17 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class SimpleMapTest<K, V> {
+public class SimpleMapTest {
 
     @Test
     public void testPut() {
-        SimpleMap<K, V> simpleMap = new SimpleMap<>();
-        assertTrue(simpleMap.put((K) "12", (V) "123"));
-        assertFalse(simpleMap.put((K) "12", (V) "123"));
-        assertTrue(simpleMap.put((K) "a", (V) "123"));
-        assertTrue(simpleMap.put((K) "b", (V) "123"));
-        assertFalse(simpleMap.put((K) "a", (V) "123"));
-        assertFalse(simpleMap.put((K) "b", (V) "123"));
+        SimpleMap<String, String> simpleMap = new SimpleMap<>();
+        assertTrue(simpleMap.put("12", "123"));
+        assertFalse(simpleMap.put("12", "123"));
+        assertTrue(simpleMap.put("a", "123"));
+        assertTrue(simpleMap.put("b", "123"));
+        assertFalse(simpleMap.put("a", "123"));
+        assertFalse(simpleMap.put("b", "123"));
     }
 
     @Test
@@ -70,14 +70,14 @@ public class SimpleMapTest<K, V> {
 
     @Test
     public void testGet() {
-        SimpleMap<K, V> simpleMap = new SimpleMap<>();
-        simpleMap.put((K) "12", (V) "123");
-        simpleMap.put((K) "a", (V) "345");
-        simpleMap.put((K) "a", (V) "445");
-        simpleMap.put((K) "b", (V) "453");
-        assertThat(simpleMap.get((K) "a"), is("345"));
-        assertThat(simpleMap.get((K) "12"), is("123"));
-        assertThat(simpleMap.get((K) "b"), is("453"));
+        SimpleMap<String, String> simpleMap = new SimpleMap<>();
+        simpleMap.put("12", "123");
+        simpleMap.put("a", "345");
+        simpleMap.put("a", "445");
+        simpleMap.put("b", "453");
+        assertThat(simpleMap.get("a"), is("345"));
+        assertThat(simpleMap.get("12"), is("123"));
+        assertThat(simpleMap.get("b"), is("453"));
     }
 
     @Test
