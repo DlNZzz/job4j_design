@@ -3,6 +3,7 @@ package ru.job4j.map;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class SimpleMap<K, V> implements Map<K, V> {
 
@@ -58,19 +59,20 @@ public class SimpleMap<K, V> implements Map<K, V> {
     public V get(K key) {
         int hash = hash(key.hashCode());
         int index = indexFor(hash);
-        if (table[index] == null) {
-            return null;
+        if (Objects.equals(table[index], new MapEntry<>(key, ""))) {
+            return table[index].value;
         }
-        return table[index].value;
+        return null;
     }
 
     @Override
     public boolean remove(K key) {
         int hash = hash(key.hashCode());
         int index = indexFor(hash);
-        if (table[index] != null) {
+        if (Objects.equals(table[index], new MapEntry<>(key, ""))) {
             table[index] = null;
             count--;
+            modCount++;
             return true;
         }
         return false;
@@ -78,16 +80,20 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
     @Override
     public Iterator<K> iterator() {
+
         int expectedModCount = modCount;
+
         Iterator<K> iterator = new Iterator<K>() {
+
             int count = 0;
+
             @Override
             public boolean hasNext() {
                 if (expectedModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
-                for (int i = count; i < table.length; i++) {
-                    if (table[i] != null) {
+                for (; count < table.length; count++) {
+                    if (table[count] != null) {
                         return true;
                     }
                 }
@@ -99,12 +105,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                for (; count < table.length; count++) {
-                    if (table[count] != null) {
-                        return table[count++].key;
-                    }
-                }
-                return null;
+                return table[count++].key;
             }
         };
         return iterator;
@@ -118,6 +119,23 @@ public class SimpleMap<K, V> implements Map<K, V> {
         public MapEntry(K key, V value) {
             this.key = key;
             this.value = value;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+            MapEntry<?, ?> mapEntry = (MapEntry<?, ?>) o;
+            return Objects.equals(key, mapEntry.key);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(key);
         }
     }
 }
