@@ -38,8 +38,6 @@ public class SimpleTree<E> implements Tree<E> {
     }
 
     private Optional<Node<E>> findByPredicate(Predicate<Node<E>> condition) {
-        Predicate<Node<E>> predicate = condition;
-        predicate.test(root);
         Optional<Node<E>> rsl = Optional.empty();
         Queue<Node<E>> data = new LinkedList<>();
         data.add(root);
