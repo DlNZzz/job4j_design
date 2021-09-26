@@ -45,3 +45,4 @@ public class SimpleTree<E> implements Tree<E> {
         return findByPredicate(e -> e.value.equals(value));
     }
 }
+
