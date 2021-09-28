@@ -8,11 +8,7 @@ public class Analize {
 
     public static Info diff(Set<User> previous, Set<User> current) {
         Info info = new Info(0, 0, 0);
-        Map<Integer, String> mapPrevious = new HashMap<>();
         Map<Integer, String> mapCurrent = new HashMap<>();
-        for (User user : previous) {
-            mapPrevious.put(user.getId(), user.getName());
-        }
         for (User user : current) {
             mapCurrent.put(user.getId(), user.getName());
         }
@@ -25,11 +21,7 @@ public class Analize {
                 info.setDeleted(info.getDeleted() + 1);
             }
         }
-        for (User user : current) {
-            if (mapPrevious.get(user.getId()) == null) {
-                info.setAdded(info.getAdded() + 1);
-            }
-        }
+        info.setAdded(Math.abs(Math.abs(current.size() - previous.size()) - info.getDeleted()));
         return info;
     }
 }
