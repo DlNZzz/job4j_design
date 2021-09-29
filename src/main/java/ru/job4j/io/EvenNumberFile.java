@@ -3,9 +3,11 @@ package ru.job4j.io;
 import java.io.FileInputStream;
 
 public class EvenNumberFile {
+
+    private static final int LINE_FEED = 10;
+    private static final int CARRIAGE_RETURN = 13;
+
     public static void main(String[] args) {
-        final int LINE_FEED = 10;
-        final int CARRIAGE_RETURN = 13;
         try (FileInputStream in = new FileInputStream("even.txt")) {
             StringBuilder text = new StringBuilder();
             int num;
