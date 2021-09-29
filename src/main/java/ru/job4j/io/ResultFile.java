@@ -1,16 +1,13 @@
 package ru.job4j.io;
 
+import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
+import java.io.PrintWriter;
 
 public class ResultFile {
     public static void main(String[] args) {
-        try (FileOutputStream out = new FileOutputStream("result.txt")) {
-            for (int i = 1; i < 6; i++) {
-                for (int j = 1; j < 6; j++) {
-                    out.write((i * j + " ").getBytes());
-                }
-                out.write(System.lineSeparator().getBytes());
-            }
+        try (PrintWriter out = new PrintWriter(new BufferedOutputStream(new FileOutputStream("result.txt")))) {
+            out.println("Hello, world!");
         } catch (Exception e) {
             e.printStackTrace();
         }
