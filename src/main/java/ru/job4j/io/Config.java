@@ -20,14 +20,14 @@ public class Config {
     public void load() {
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             for (String i = reader.readLine(); i != null; i = reader.readLine()) {
-                String[] array = i.split("=");
-                if (array.length == 2
-                        && !i.startsWith("=")
-                        && !i.endsWith("=")) {
-                    values.put(array[0], array[1]);
-                } else if (i.contains("=")) {
+                String[] array = new String[0];
+                if (i.contains("=")) {
+                    array = i.split("=");
+                }
+                if (array.length != 2) {
                     throw new IllegalArgumentException();
                 }
+                values.put(array[0], array[1]);
             }
         } catch (IOException e) {
             e.printStackTrace();
