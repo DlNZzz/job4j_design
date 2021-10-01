@@ -20,9 +20,8 @@ public class Config {
     public void load() {
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             for (String i = reader.readLine(); i != null; i = reader.readLine()) {
-                String[] array = new String[0];
                 if (i.contains("=")) {
-                    array = i.split("=");
+                    String[] array = i.split("=");
                     if (array.length != 2) {
                         throw new IllegalArgumentException();
                     }
