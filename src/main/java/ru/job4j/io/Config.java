@@ -23,11 +23,11 @@ public class Config {
                 String[] array = new String[0];
                 if (i.contains("=")) {
                     array = i.split("=");
+                    if (array.length != 2) {
+                        throw new IllegalArgumentException();
+                    }
+                    values.put(array[0], array[1]);
                 }
-                if (array.length != 2) {
-                    throw new IllegalArgumentException();
-                }
-                values.put(array[0], array[1]);
             }
         } catch (IOException e) {
             e.printStackTrace();
