@@ -1,7 +1,5 @@
 package ru.job4j.test.task.three;
 
-//2. Найти корни квадратного уравнения с проверкой дискриминанта. Вывести если одинаковые корни - сообщение «Корни одинаковые»
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
