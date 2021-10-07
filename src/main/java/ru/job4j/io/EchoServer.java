@@ -6,7 +6,9 @@ import java.net.Socket;
 
 public class EchoServer {
 
-    private static final String MESSAGE_CLOSE = "Bye";
+    private static final String MESSAGE_CLOSE = "Exit";
+    private static final String MESSAGE_HELLO = "Hello";
+    private static final String MESSAGE_WHAT = "What";
 
     public static void main(String[] args) throws IOException {
         try (ServerSocket server = new ServerSocket(9000)) {
@@ -20,6 +22,10 @@ public class EchoServer {
                         System.out.println(str);
                         if (str.contains(MESSAGE_CLOSE)) {
                             server.close();
+                        } else if (str.contains(MESSAGE_HELLO)) {
+                            out.write(MESSAGE_HELLO.getBytes());
+                        } else if (str.split("=").length == 2) {
+                            out.write(MESSAGE_WHAT.getBytes());
                         }
                     }
                     out.flush();
