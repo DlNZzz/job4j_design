@@ -10,11 +10,14 @@ public class Contact {
     private String phone;
 
     public Contact() {
-
     }
 
     public Contact(String phone) {
         this.phone = phone;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     @Override
