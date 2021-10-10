@@ -1,0 +1,1 @@
+update library set availability = false;
