@@ -31,7 +31,7 @@ public class Search {
 
         String nameFile = argsName.get("n");
         String searchType = argsName.get("t");
-        //Path output = Path.of(argsName.get("o"));
+        Path output = Path.of(argsName.get("o"));
         Files.walkFileTree(path, new Visitor(nameFile, searchType));
         List<Path> list = Visitor.getList();
 

@@ -8,6 +8,12 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+//if ("mask".equals(searchType)) {
+
+        //}
+ */
+
 public class Visitor extends SimpleFileVisitor<Path> {
 
     private String nameFile;
@@ -35,8 +41,5 @@ public class Visitor extends SimpleFileVisitor<Path> {
                 list.add(path);
             }
         }
-        //if ("mask".equals(searchType)) {
-
-        //}
     }
 }
