@@ -1,1 +1,0 @@
-insert into library(name, author, availability) values('Java Полное руководство', 'Герберт Шилдт', true);
