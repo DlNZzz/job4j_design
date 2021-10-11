@@ -12,16 +12,6 @@ insert into users(name, role_id) values ('name1', 2);
 insert into users(name, role_id) values ('name2', 1);
 insert into users(name, role_id) values ('name3', 2);
 
-insert into comments(comments) values ('comments1');
-insert into comments(comments) values ('comments2');
-insert into comments(comments) values ('comments3');
-insert into comments(comments) values ('comments4');
-
-insert into attachs(attachs) values ('attachs1');
-insert into attachs(attachs) values ('attachs2');
-insert into attachs(attachs) values ('attachs3');
-insert into attachs(attachs) values ('attachs4');
-
 insert into category(category) values ('category1');
 insert into category(category) values ('category2');
 insert into category(category) values ('category3');
@@ -32,8 +22,18 @@ insert into state(state) values ('state2');
 insert into state(state) values ('state3');
 insert into state(state) values ('state4');
 
-insert into item(item, users_id, comments_id, attachs_id, category_id, state_id) values ('item1', 2, 3, 4, 1, 1);
-insert into item(item, users_id, comments_id, attachs_id, category_id, state_id) values ('item2', 3, 4, 1, 1, 2);
-insert into item(item, users_id, comments_id, attachs_id, category_id, state_id) values ('item3', 1, 1, 1, 2, 3);
-insert into item(item, users_id, comments_id, attachs_id, category_id, state_id) values ('item4', 2, 1, 2, 3, 4);
-insert into item(item, users_id, comments_id, attachs_id, category_id, state_id) values ('item5', 3, 2, 3, 4, 1);
+insert into item(item, users_id, category_id, state_id) values ('item1', 2, 1, 1);
+insert into item(item, users_id, category_id, state_id) values ('item2', 3, 1, 2);
+insert into item(item, users_id, category_id, state_id) values ('item3', 1, 2, 3);
+insert into item(item, users_id, category_id, state_id) values ('item4', 2, 3, 4);
+insert into item(item, users_id, category_id, state_id) values ('item5', 3, 4, 1);
+
+insert into comments(comments, item_id) values ('comments1', 1);
+insert into comments(comments, item_id) values ('comments2', 2);
+insert into comments(comments, item_id) values ('comments3', 3);
+insert into comments(comments, item_id) values ('comments4', 5);
+
+insert into attachs(attachs, item_id) values ('attachs1', 1);
+insert into attachs(attachs, item_id) values ('attachs2', 2);
+insert into attachs(attachs, item_id) values ('attachs3', 3);
+insert into attachs(attachs, item_id) values ('attachs4', 5);
