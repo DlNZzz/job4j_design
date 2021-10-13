@@ -11,17 +11,24 @@ public class TestTwo {
         if (f.length != s.length) {
             return false;
         }
-        for (int i = 0; i < f.length; i++) {
-            if (f[i] != s[i]) {
-                return false;
+        int count = 0;
+        fi: for (int i = 0; i < f.length; i++) {
+            for (int j = 0; j < s.length; j++) {
+                if (f[i] == s[j]) {
+                    count++;
+                    continue fi;
+                }
             }
         }
-        return true;
+        if (count == f.length) {
+            return true;
+        }
+        return false;
     }
 
     public static void main(String[] args) {
-        String first = null;
-        String second = "av";
+        String first = "vvvamavmsv";
+        String second = "vvvmasmavvs";
         System.out.println(same(first, second));
     }
 }
