@@ -25,7 +25,7 @@ public class TestTwo {
 
     public static void main(String[] args) {
         String first = "vvvamavmsv";
-        String second = "vvvmasmavvs";
+        String second = "vvvmasmavv";
         System.out.println(same(first, second));
     }
 }
