@@ -3,6 +3,9 @@ package ru.job4j;
 public class TestTwo {
 
     public static boolean same(String first, String second) {
+        if (first == null || second == null) {
+            throw new IllegalArgumentException();
+        }
         byte[] f = first.getBytes();
         byte[] s = second.getBytes();
         if (f.length != s.length) {
@@ -17,7 +20,7 @@ public class TestTwo {
     }
 
     public static void main(String[] args) {
-        String first = "av";
+        String first = null;
         String second = "av";
         System.out.println(same(first, second));
     }
