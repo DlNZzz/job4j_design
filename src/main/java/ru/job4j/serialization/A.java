@@ -68,7 +68,7 @@ public class A {
 
         @Override
         public String toString() {
-            return "B{"
+            return "ru.job4j.B{"
                     + "b=" + b
                     + '}';
         }
