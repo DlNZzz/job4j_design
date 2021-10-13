@@ -20,10 +20,7 @@ public class TestTwo {
                 }
             }
         }
-        if (count == f.length) {
-            return true;
-        }
-        return false;
+        return count == f.length;
     }
 
     public static void main(String[] args) {
