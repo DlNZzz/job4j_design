@@ -11,22 +11,9 @@ public class TableEditor implements AutoCloseable {
 
     private Properties properties;
 
-    private Statement statement;
-
     public TableEditor(Properties properties) throws Exception {
         this.properties = properties;
         initConnection();
-        statement = connection.createStatement();
-    }
-
-    private Connection getConnection() throws Exception {
-        FileInputStream fis = new FileInputStream("src\\data\\add.properties");
-        properties.load(fis);
-        Class.forName("org.postgresql.Driver");
-        String url = properties.getProperty("url");
-        String login = properties.getProperty("login");
-        String password = properties.getProperty("password");
-        return DriverManager.getConnection(url, login, password);
     }
 
     public static void main(String[] args) throws Exception {
@@ -39,35 +26,44 @@ public class TableEditor implements AutoCloseable {
         tableEditor.renameColumn("demo_table", "name", "nameN");
         tableEditor.dropColumn("demo_table", "id");
         System.out.println(getTableScheme(tableEditor.connection, tableName));
-        tableEditor.connection.close();
-        tableEditor.statement.close();
+        tableEditor.close();
+    }
+
+    private Statement initStatement() throws SQLException {
+        return connection.createStatement();
     }
 
     private void initConnection() throws Exception {
-        connection = getConnection();
+        FileInputStream fis = new FileInputStream("src\\data\\add.properties");
+        properties.load(fis);
+        Class.forName(properties.getProperty("driver"));
+        String url = properties.getProperty("url");
+        String login = properties.getProperty("login");
+        String password = properties.getProperty("password");
+        connection = DriverManager.getConnection(url, login, password);
     }
 
     public void createTable(String tableName) throws SQLException {
-        statement.execute("create table if not exists " + tableName + "();");
+        initStatement().execute("create table if not exists " + tableName + "();");
     }
 
     public void dropTable(String tableName) throws SQLException {
-        statement.execute("drop table " + tableName + ";");
+        initStatement().execute("drop table " + tableName + ";");
     }
 
     public void addColumn(String tableName, String columnName, String type) throws SQLException {
         String sql = String.format("alter table %s add column %s %s;", tableName, columnName, type);
-        statement.execute(sql);
+        initStatement().execute(sql);
     }
 
     public void dropColumn(String tableName, String columnName) throws SQLException {
         String sql = String.format("alter table %s drop column %s;", tableName, columnName);
-        statement.execute(sql);
+        initStatement().execute(sql);
     }
 
     public void renameColumn(String tableName, String columnName, String newColumnName) throws SQLException {
         String sql = String.format("alter table %s rename column %s to %s;", tableName, columnName, newColumnName);
-        statement.execute(sql);
+        initStatement().execute(sql);
     }
 
 
