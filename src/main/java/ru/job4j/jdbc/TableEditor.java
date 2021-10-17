@@ -17,7 +17,10 @@ public class TableEditor implements AutoCloseable {
     }
 
     public static void main(String[] args) throws Exception {
-        TableEditor tableEditor = new TableEditor(new Properties());
+        Properties properties = new Properties();
+        FileInputStream fis = new FileInputStream("src\\data\\add.properties");
+        properties.load(fis);
+        TableEditor tableEditor = new TableEditor(properties);
         final String tableName = "demo_table";
         tableEditor.dropTable(tableName);
         tableEditor.createTable(tableName);
@@ -29,13 +32,11 @@ public class TableEditor implements AutoCloseable {
         tableEditor.close();
     }
 
-    private Statement initStatement() throws SQLException {
-        return connection.createStatement();
+    private void initStatement(String something) throws SQLException {
+        connection.createStatement().execute(something);
     }
 
     private void initConnection() throws Exception {
-        FileInputStream fis = new FileInputStream("src\\data\\add.properties");
-        properties.load(fis);
         Class.forName(properties.getProperty("driver"));
         String url = properties.getProperty("url");
         String login = properties.getProperty("login");
@@ -44,26 +45,26 @@ public class TableEditor implements AutoCloseable {
     }
 
     public void createTable(String tableName) throws SQLException {
-        initStatement().execute("create table if not exists " + tableName + "();");
+        initStatement("create table if not exists " + tableName + "();");
     }
 
     public void dropTable(String tableName) throws SQLException {
-        initStatement().execute("drop table " + tableName + ";");
+        initStatement("drop table " + tableName + ";");
     }
 
     public void addColumn(String tableName, String columnName, String type) throws SQLException {
         String sql = String.format("alter table %s add column %s %s;", tableName, columnName, type);
-        initStatement().execute(sql);
+        initStatement(sql);
     }
 
     public void dropColumn(String tableName, String columnName) throws SQLException {
         String sql = String.format("alter table %s drop column %s;", tableName, columnName);
-        initStatement().execute(sql);
+        initStatement(sql);
     }
 
     public void renameColumn(String tableName, String columnName, String newColumnName) throws SQLException {
         String sql = String.format("alter table %s rename column %s to %s;", tableName, columnName, newColumnName);
-        initStatement().execute(sql);
+        initStatement(sql);
     }
 
 
