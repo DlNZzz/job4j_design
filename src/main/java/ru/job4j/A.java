@@ -8,5 +8,6 @@ public class A {
     public static void main(String[] args) {
         var header = String.format("%-15s|%-15s%n", "NAME", "TYPE");
         System.out.println(header);
+        System.out.println(header);
     }
 }
