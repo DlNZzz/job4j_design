@@ -1,4 +1,4 @@
-package ru.job4j.test.task.three;
+package ru.job4j.test.three;
 
 public class SolutionOne {
 

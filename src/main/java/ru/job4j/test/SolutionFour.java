@@ -1,4 +1,4 @@
-package ru.job4j.test.task;
+package ru.job4j.test;
 
 import java.io.BufferedReader;
 import java.io.IOException;

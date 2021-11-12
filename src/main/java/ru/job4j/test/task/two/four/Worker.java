@@ -1,4 +1,4 @@
-package ru.job4j.test.task.task.two.four;
+package ru.job4j.test.task.two.four;
 
 public class Worker extends Person {
 

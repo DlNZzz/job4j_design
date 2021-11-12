@@ -1,4 +1,4 @@
-package ru.job4j.test.task.task.two;
+package ru.job4j.test.task.two;
 
 public class Solution {
     public static void main(String[] args) {

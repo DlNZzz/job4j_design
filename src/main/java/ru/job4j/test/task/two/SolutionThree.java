@@ -1,4 +1,4 @@
-package ru.job4j.test.task.task.two;
+package ru.job4j.test.task.two;
 
 import java.util.Objects;
 
