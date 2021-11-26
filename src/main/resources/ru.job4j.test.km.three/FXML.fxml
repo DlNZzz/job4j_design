@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.Button?>
+<Pane xmlns="http://javafx.com/javafx/1.8.0.261" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.job4j.test.km.three.Main">
+    <Button fx:id="fxButton" text="clickMe" onAction="#click"/>
+</Pane>
